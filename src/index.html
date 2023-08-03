@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Departures</title>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="../static/icon-96x96.png" type="image/png" />
+  <link rel="manifest" href="../static/manifest.json" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+</head>
+
+<body>
+  <div id="wrap">
+    <div id="container">
+      <table id="departures">
+        <thead>
+          <tr>
+            <th>Wait</th>
+            <th>Departure</th>
+            <th>Line</th>
+            <th>Destination</th>
+          </tr>
+        </thead>
+        <tbody id="dep-container">
+          <tr>
+            <td colspan="4" id="loading">Loading...</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td id="footer" colspan="4">Last updated: <span id="last-updated">...</span></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+  <script type="module" src="index.js"></script>
+</body>
+
+</html>
