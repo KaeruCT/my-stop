@@ -14,12 +14,16 @@ const DEPARTURE_TMPL = `
 </tr>
 `;
 
+function d(s) {
+  return document.querySelector(s);
+}
+
 async function init() {
-  const depTitle = document.querySelector("#dep-title");
-  const depContainer = document.querySelector("#dep-container");
-  const lastUpdated = document.querySelector("#last-updated");
-  const footer = document.querySelector("#footer");
-  const status = document.querySelector("#status");
+  const depTitle = d("#dep-title");
+  const depContainer = d("#dep-container");
+  const lastUpdated = d("#last-updated");
+  const footer = d("#footer");
+  const status = d("#status");
   const ctx = { formatTime, formatIcon, formatWaitTime };
   const stopSearch = document.location.hash || "Storkower";
 

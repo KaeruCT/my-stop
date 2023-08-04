@@ -1,14 +1,11 @@
 {
   "name": "my-stop",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "",
   "source": "src/index.html",
   "scripts": {
     "start": "parcel",
     "build": "parcel build"
-  },
-  "dependencies": {
-    
   },
   "devDependencies": {
     "@parcel/packager-raw-url": "^2.9.3",
