@@ -34,12 +34,26 @@ body {
 }
 
 #container {
-    border-radius: 10px;
-    background: rgba(0, 0, 0, 0.8);
-    box-shadow: rgba(0, 0, 0, 0.6) 2px 2px 15px;
     min-height: 200px;
     min-width: 600px;
     display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    color: #cecece;
+    text-shadow: #000 2px 2px 0,#000 -2px -2px 0, #000 -2px 2px 0, #000 2px -2px 0;
+    padding-bottom: 5px;
+    white-space: nowrap;
+}
+
+#departures {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    box-shadow: rgba(0, 0, 0, 0.6) 2px 2px 15px;
+    border-collapse: collapse;
+    color: #cecece;
+    width: 100%;
 }
 
 #footer {
@@ -50,19 +64,16 @@ body {
     visibility: hidden;
 }
 
-#departures {
-    border-collapse: collapse;
-    color: #cecece;
-    width: 100%;
-}
-
 thead tr {
     height: 1em;
 }
 
-#loading {
+#status {
     vertical-align: middle;
     text-align: center;
+}
+.error {
+    color: #d33;
 }
 
 thead th {
@@ -82,4 +93,26 @@ td img {
     position: relative;
     top: 3px;
     padding-right: 5px;
+}
+
+@media (max-width: 809px) {
+    body {
+        font-size: 16px;
+        padding: 5px;
+    }
+    h1 {
+        font-size: 1.5em;
+    }
+    #container, #departures {
+        min-width: 0;
+    }
+    #departures {
+        border-radius: 5px;
+    }
+    #footer {
+        padding-top: 5px;
+    }
+    td, th {
+        padding: 0 5px 2px;
+    }
 }
