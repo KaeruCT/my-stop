@@ -4,7 +4,7 @@ This is a simple webapp that display the upcoming departures of a specific stati
 
 The information is obtained from [https://v6.bvg.transport.rest/](https://v6.bvg.transport.rest/), which is a wrapper of a BVG API.
 
-The app is currently deployed at [here](https://my-stop.netlify.app/). You can search for a stop by adding it to the location hash. For example: `https://my-stop.netlify.app/#ostkreuz`.
+The app is currently deployed [here](https://my-stop.netlify.app/). You can search for a stop by adding it to the location hash. For example: `https://my-stop.netlify.app/#ostkreuz`.
 
 <img alt="game over" src="./screenshot.png" width="400"/>
 
