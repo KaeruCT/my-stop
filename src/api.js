@@ -1,3 +1,7 @@
+import { formatAvailableLine } from "./format";
+import { d } from "./lib";
+import { KEYS, get, set } from "./storage";
+
 /**
  * See https://v6.bvg.transport.rest/
  */
@@ -14,4 +18,25 @@ export async function getStop(stopSearch) {
     const result = await fetch(`https://v6.bvg.transport.rest/locations?poi=false&addresses=false&query=${encodeURIComponent(stopSearch)}`);
     const json = await result.json();
     return json[0];
+}
+
+export function filterDepartures(departures) {
+  let listOfLines = [... new Set(departures.map(ride => ride.line.productName).sort())];
+
+  if (listOfLines.length === 1) {
+    d("#available-lines").className = "hidden";
+    return departures;
+  }
+
+  const storedLines = get(KEYS.lines);
+  if (!storedLines) {
+    set(KEYS.lines, listOfLines);
+  }
+
+  lines.innerHTML = listOfLines.map(line => formatAvailableLine(line)).join("");
+  const lineList = Array.from(document.getElementsByName("lines"));
+  const selectedLines = lineList.filter(e => e.checked);
+  const checkedLines = selectedLines.map(e => e.dataset.line);
+
+  return departures.filter(ride => checkedLines.includes(ride.line.productName));
 }
