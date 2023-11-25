@@ -3,6 +3,7 @@ import sbahnIcon from "../icon/sbahn.svg";
 import ubahnIcon from "../icon/ubahn.svg";
 import tramIcon from "../icon/tram.png";
 import regionalIcon from "../icon/regional.png";
+import { KEYS, get } from "./storage";
 
 export function formatTime(isoDate) {
     const date = new Date(isoDate);
@@ -20,9 +21,9 @@ export function formatWaitTime(departure) {
     const timeDelta = Math.max((new Date(departure) - new Date()) / 1000, 0);
 
     if (timeDelta < 60) {
-        return "Go!";
+        return "NOW";
     } else if (timeDelta < 3600) {
-        return `${Math.floor(timeDelta / 60)}min`;
+        return `${Math.floor(timeDelta / 60)}′`;
     } else {
         const deltaHours = Math.floor(timeDelta / 3600);
         const deltaMinutes = Math.floor((timeDelta % 3600) / 60);
@@ -36,7 +37,7 @@ export function formatWaitTime(departure) {
 }
 
 function img(src, alt) {
-    return `<img src="${src}" alt="${alt}"" />`;
+    return `<img src="${src}" alt="${alt}" />`;
 }
 
 const icons = {
@@ -46,6 +47,20 @@ const icons = {
     subway: img(ubahnIcon, "U-Bahn"),
     regional: img(regionalIcon, "Regional Train")
 }
+
 export function formatIcon(val) {
     return icons[val] || val;
+}
+
+export function formatAvailableLine(line) {
+  const checkedLines = get(KEYS.lines);
+  const isChecked = checkedLines.split(",").includes(line) ? "checked" : "";
+
+  return `
+    <li>
+      <label>
+        <input type="checkbox" id="line-${line}" data-line="${line}" name="lines" ${isChecked}/> ${line}
+      </label>
+    </li>
+  `;
 }

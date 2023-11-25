@@ -1,0 +1,21 @@
+body {
+    background: blue;
+    color: #fff;
+}
+
+input[type="checkbox"] {
+    accent-color: #fff;
+}
+
+thead th {
+    border-bottom-width: .15rem;
+}
+
+#footer {
+    color: #ddd;
+}
+
+.line-column img,
+.pin-img {
+    display: none;
+}
