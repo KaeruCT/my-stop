@@ -21,9 +21,9 @@ export function formatWaitTime(departure) {
     const timeDelta = Math.max((new Date(departure) - new Date()) / 1000, 0);
 
     if (timeDelta < 60) {
-        return "Go!";
+        return "NOW";
     } else if (timeDelta < 3600) {
-        return `${Math.floor(timeDelta / 60)}min`;
+        return `${Math.floor(timeDelta / 60)}′`;
     } else {
         const deltaHours = Math.floor(timeDelta / 3600);
         const deltaMinutes = Math.floor((timeDelta % 3600) / 60);
@@ -47,6 +47,7 @@ const icons = {
     subway: img(ubahnIcon, "U-Bahn"),
     regional: img(regionalIcon, "Regional Train")
 }
+
 export function formatIcon(val) {
     return icons[val] || val;
 }

@@ -1,3 +1,4 @@
+import "./base.css";
 import "./alt-01.css";
 import { getDepartures, getStop, filterDepartures } from "./api.js";
 import { parse } from "./tmpl";
@@ -9,10 +10,10 @@ const REFRESH_INTERVAL = 10_1000;
 
 const DEPARTURE_TMPL = `
 <tr>
-<td><strong>{formatIcon(line.product)}&nbsp;{line.name}</strong></td>
-<td>{formatWaitTime(when)}</td>
-<td>{formatTime(when)}</td>
-<td>{destination.name}</td>
+  <td class="line-column">{formatIcon(line.product)}{line.name}</td>
+  <td class="destination-column">{destination.name}</td> 
+  <td class="departure-column">{formatTime(when)}</td>
+  <td class="wait-column">{formatWaitTime(when)}</td>
 </tr>
 `;
 
@@ -36,6 +37,7 @@ export async function init() {
   const lines = d("#lines");
   const ctx = { formatTime, formatIcon, formatWaitTime };
   const stopSearch = document.location.hash || "Storkower";
+  let timeout;
 
   async function refresh(stop) {
     // TODO: realtimeDataUpdatedAt sometimes goes back in time (upstream caching issue?)
@@ -47,7 +49,8 @@ export async function init() {
     depContainer.innerHTML = filteredDepartures.map(dep => parse(DEPARTURE_TMPL, dep, ctx)).join("");
     lastUpdated.innerText = formatDate(new Date().getTime());
     footer.style.visibility = "visible";
-    setTimeout(() => refresh(stop), REFRESH_INTERVAL);
+    if (timeout) clearTimeout(timeout);
+    timeout = setTimeout(() => refresh(stop), REFRESH_INTERVAL);
   }
 
   const stop = await getStop(stopSearch);
@@ -55,6 +58,7 @@ export async function init() {
     status.innerText = "Stop not found!";
     status.className = "error";
   }
+
   refresh(stop);
 }
 
