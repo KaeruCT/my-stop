@@ -1,21 +1,21 @@
-body {
+.blue body {
     background: blue;
     color: #fff;
 }
 
-input[type="checkbox"] {
+.blue input[type="checkbox"] {
     accent-color: #fff;
 }
 
-thead th {
+.blue thead th {
     border-bottom-width: .15rem;
 }
 
-#footer {
+.blue #footer {
     color: #ddd;
 }
 
-.line-column img,
-.pin-img {
+.blue .line-column img,
+.blue .pin-img {
     display: none;
 }

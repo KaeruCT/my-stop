@@ -1,20 +1,20 @@
-body {
+.yellow body {
     background: #222;
 }
 
-h1 {
+.yellow h1 {
     background: #f0d722;
     color: #000;
 }
 
-input[type="checkbox"] {
+.yellow input[type="checkbox"] {
     accent-color: #f0d722;
 }
 
-#footer {
+.yellow #footer {
     color: #666;
 }
 
-#wrap {
+.yellow #wrap {
     background: #fff;
 }

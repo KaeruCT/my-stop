@@ -1,9 +1,10 @@
-import "./base.css";
-import "./alt-01.css";
+import "./styles/base.css";
+import "./styles/yellow.css";
+import "./styles/blue.css";
 import { getDepartures, getStop, filterDepartures } from "./api.js";
 import { parse } from "./tmpl";
 import { formatTime, formatDate, formatIcon, formatWaitTime } from "./format";
-import { d } from "./lib.js";
+import { d, setStyleVariant } from "./lib.js";
 import { KEYS, set } from "./storage.js";
 
 const REFRESH_INTERVAL = 10_1000;
@@ -49,6 +50,7 @@ export async function init() {
     depContainer.innerHTML = filteredDepartures.map(dep => parse(DEPARTURE_TMPL, dep, ctx)).join("");
     lastUpdated.innerText = formatDate(new Date().getTime());
     footer.style.visibility = "visible";
+    setStyleVariant();
     if (timeout) clearTimeout(timeout);
     timeout = setTimeout(() => refresh(stop), REFRESH_INTERVAL);
   }
