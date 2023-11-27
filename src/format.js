@@ -3,6 +3,7 @@ import sbahnIcon from "../icon/sbahn.svg";
 import ubahnIcon from "../icon/ubahn.svg";
 import tramIcon from "../icon/tram.png";
 import regionalIcon from "../icon/regional.png";
+import longDistance from "../icon/express.png";
 import { KEYS, get } from "./storage";
 
 export function formatTime(isoDate) {
@@ -45,7 +46,8 @@ const icons = {
     suburban: img(sbahnIcon, "S-Bahn"),
     tram: img(tramIcon, "Tram"),
     subway: img(ubahnIcon, "U-Bahn"),
-    regional: img(regionalIcon, "Regional Train")
+    regional: img(regionalIcon, "Regional Train"),
+    express: img(longDistance, "Long Distance Train")
 }
 
 export function formatIcon(val) {
